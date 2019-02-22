@@ -12,6 +12,20 @@ import java.io.IOException;
 
 
 public class Retrofit2Util {
+
+    public static Api api = null;
+
+    public static Api getInstance() {
+        if (api == null) {
+            synchronized (Retrofit2Util.class) {
+                if (api == null) {
+                    api = getApi();
+                }
+            }
+        }
+        return api;
+    }
+
     // 添加默认参数拦截器
     private static class CommonInterceptor implements Interceptor {
         @Override
@@ -60,28 +74,6 @@ public class Retrofit2Util {
         // 创建网络请求接口的实例
         Api mApi = retrofit.create(Api.class);
         return mApi;
-    }
-
-    public static Api api = null;
-
-    public Retrofit2Util() {
-    }
-
-    public static void resetApi() {
-        api = null;
-    }
-
-    private static final Retrofit2Util retrofit2Util = new Retrofit2Util();
-
-    public static Retrofit2Util getInstance() {
-        if (api == null) {
-            synchronized (Retrofit2Util.class) {
-                if (api == null) {
-                    api = getApi();
-                }
-            }
-        }
-        return retrofit2Util;
     }
 
 

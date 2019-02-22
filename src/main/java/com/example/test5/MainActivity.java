@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(String user) {
-        Call<ResponseBody> login = Retrofit2Util.getInstance().api.login(user, "df29319b-2561-4c37-9d09-af2d94a00cb9");
+        Call<ResponseBody> login = Retrofit2Util.getInstance().login(user, "df29319b-2561-4c37-9d09-af2d94a00cb9");
         login.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
