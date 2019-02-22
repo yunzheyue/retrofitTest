@@ -12,9 +12,7 @@ import java.io.IOException;
 
 
 public class Retrofit2Util {
-
     public static Api api = null;
-
     public static Api getInstance() {
         if (api == null) {
             synchronized (Retrofit2Util.class) {
@@ -25,7 +23,6 @@ public class Retrofit2Util {
         }
         return api;
     }
-
     // 添加默认参数拦截器
     private static class CommonInterceptor implements Interceptor {
         @Override
@@ -75,6 +72,5 @@ public class Retrofit2Util {
         Api mApi = retrofit.create(Api.class);
         return mApi;
     }
-
 
 }
