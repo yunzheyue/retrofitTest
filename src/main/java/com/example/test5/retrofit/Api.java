@@ -8,7 +8,6 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.*;
 
-import java.util.HashMap;
 import java.util.Map;
 
 
@@ -16,7 +15,7 @@ public interface Api {
 
 //todo    下面是对于get请求
 
-//    可以多指定几个查询条件
+    //    可以多指定几个查询条件
     @GET("GetData/User_QueryPhonePrincipal")
     Call<ResponseBody> login(@Query("UserCode") String userCode, @Query("ApplicationID") String applicationID);
 
@@ -42,30 +41,30 @@ public interface Api {
     Call<ResponseBody> postData(@Field("name") String name);
 
 
-//    可以使用@Body将json字符串作为请求体发送到服务器.@Body会自动将对象转化为字符串
+    //    可以使用@Body将json字符串作为请求体发送到服务器.@Body会自动将对象转化为字符串
     @POST("xxxxx")
     Call<ResponseBody> postData1(@Body User user);
 
-//    单个文件上传@Part
+    //    单个文件上传@Part
     @Multipart  //必须配合@Part进行使用
     @POST("xxxx")
     Call<ResponseBody> postData2(@Part MultipartBody.Part file);
 
 
-//    多文件的上传
+    //    多文件的上传
     @Multipart
     @POST("xxx")
     Call<ResponseBody> postData3(@PartMap Map<String, RequestBody> maps);
 
 
-
-//todo   文件的下载
+    //todo   文件的下载
     @Streaming //大文件时要加不然会OOM
     @GET
     Call<ResponseBody> downloadFile(@Url String fileUrl);
 
 
-
 //todo    添加消息头，可以使用静态方法,动态方法，拦截器等方法
+
+//    https://blog.csdn.net/silenceoo/article/details/77460607
 
 }
